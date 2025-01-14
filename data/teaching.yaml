@@ -1,0 +1,60 @@
+teaching_experience:
+  - institution: "Binghamton University"
+    courses:
+      - name: "LEAD 552: Team Leadership"
+        level: "MBA"
+        role: "Instructor"
+        semesters: 
+          - "Spring 2023"
+          - "Fall 2023"
+          - "Fall 2024"
+        description: "MBA-level course focused on team leadership principles and practices"
+        evaluations:
+          - semester: "Spring 2023"
+            soot_scores:
+              instructor: 3.61
+              course: 3.44
+          - semester: "Fall 2023"
+            soot_scores:
+              instructor: 3.50
+              course: 3.46
+          - semester: "Fall 2024"
+            soot_scores:
+              instructor: 3.87
+              course: 3.44
+        
+      - name: "MGMT 481/581: Advanced Business Statistics"
+        level: "Undergraduate/Graduate"
+        role: "Instructor"
+        semesters:
+          - "Fall 2022"
+          - "Fall 2023"
+        description: "Combined undergraduate/graduate course covering advanced statistical methods in business"
+        evaluations:
+          - semester: "Fall 2022"
+            soot_scores:
+              instructor: 4.00
+              course: 3.67
+          - semester: "Fall 2023"
+            soot_scores:
+              instructor: 3.83
+              course: 3.44
+
+      - name: "MGMT 687: Applied Multivariate Statistics"
+        level: "PhD"
+        role: "Instructor"
+        semesters:
+          - "Spring 2023"
+        description: "Doctoral-level course on advanced multivariate statistical techniques and applications"
+        evaluations:
+          - semester: "Spring 2023"
+            soot_scores:
+              instructor: 4.00
+              course: 3.50
+            note: "2/2 respondents"
+
+teaching_summary:
+  total_courses: 3
+  total_semesters: 6
+  teaching_interests: "Leadership development, quantitative research methods, and advanced statistical analysis"
+  evaluation_summary: "Received an 80% response rate from students on SOOT surveys"

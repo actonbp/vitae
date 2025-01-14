@@ -1,0 +1,24 @@
+name:
+  first: Bryan
+  middle: P
+  last: Acton
+contact:
+  email: bacton@binghamton.edu
+  phone: '607-777-2286'
+  website: bpacton.com
+  github: actonbp
+  orcid: ''
+current_position:
+  title: Assistant Professor of Leadership & Organizational Behavior
+  department: School of Management
+  institution: Binghamton University
+  address:
+    street: 'Academic Building A RM 242, 4400 Vestal Pkwy E'
+    city: Binghamton
+    state: NY
+    zip: '13902'
+    country: USA
+research_interests:
+- Leadership in teams
+- Multi-level dynamics of leadership
+- Agent-based modeling and machine learning in leadership

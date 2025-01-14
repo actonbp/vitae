@@ -1,0 +1,10 @@
+# Output directory
+output/
+
+# System files
+.DS_Store
+*.log
+
+# Temporary files
+*.tmp
+*~ 

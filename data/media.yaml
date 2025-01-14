@@ -1,0 +1,24 @@
+---
+media_appearances:
+  - type: "Radio/Podcast"
+    outlet: "NPR - Academic Minute"
+    title: "Unveiling the Blind Spots in Leadership Evaluations"
+    date: "December 2023"
+    url: "https://www.aacu.org/podcasts/academicminute/2023-12-bryan-acton-binghamton-university-unveiling-the-blind-spots-in-leadership-evaluations"
+    description: "Featured expert discussing research on leadership perception and evaluation"
+
+  - type: "Press Coverage"
+    outlet: "Lab Manager"
+    title: "Employee Surveys May Miss Out on Uncovering Toxic Leadership Practices"
+    date: "2023"
+    url: "https://www.labmanager.com/employee-surveys-may-miss-out-on-uncovering-toxic-leadership-practices-30960"
+    description: "Featured research on leadership assessment methodologies, discussing how traditional employee surveys might overlook negative leadership behaviors"
+    details: "Research conducted with doctoral student Mengying Li, supported by U.S. Army Research Institute grant. Paper recognized among 'Best Papers' at Academy of Management conference."
+
+  - type: "Press Coverage"
+    outlet: "SHRM Executive Network"
+    title: "Rethink Your Employee Surveys: 6 Ways to Uncover Toxic Leadership Habits"
+    date: "February 2024"
+    url: "https://www.shrm.org/executive-network/insights/rethink-employee-surveys-uncover-toxic-leadership-habits"
+    description: "Research featured in Society for Human Resource Management's executive network insights, discussing implications for HR practices and leadership assessment"
+    details: "Extended coverage of research findings with practical applications for HR professionals and organizational leaders"

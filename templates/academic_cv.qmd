@@ -1,0 +1,436 @@
+---
+title: ""
+format:
+  pdf:
+    documentclass: article
+    papersize: letter
+    geometry:
+      - margin=1in
+      - textwidth=6.5in
+    fontsize: 11pt
+    linestretch: 1.15
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{lastpage}
+  - \usepackage{xcolor}
+  - \usepackage{ragged2e}
+  - \usepackage{array}
+  - \usepackage{enumitem}
+  - \usepackage{setspace}
+  - \usepackage[T1]{fontenc}
+  - \usepackage{mathpazo}
+  - \usepackage[explicit]{titlesec}
+  - \usepackage{parskip}
+  - \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+  - \pagestyle{fancy}
+  - \fancyhf{}
+  - \renewcommand{\headrulewidth}{0.4pt}
+  - \fancyhead[L]{Bryan Acton}
+  - \fancyhead[R]{Curriculum Vitae}
+  - \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+  - \setlength{\parindent}{0pt}
+  - \setlength{\parskip}{0.5em}
+  - \titleformat{\section}{\Large\bfseries\raggedright}{}{0em}{#1}[\vspace{0.5em}\titlerule]
+  - \titlespacing*{\section}{0pt}{1.5em}{1em}
+  - \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{#1}
+  - \titlespacing*{\subsection}{0pt}{1em}{0.5em}
+  - \setlength{\emergencystretch}{3em}
+  - \widowpenalty=10000
+  - \clubpenalty=10000
+  - \raggedbottom
+  - \newcommand{\cvitem}[1]{\par\hangindent=2em\hangafter=1\noindent#1\par}
+execute:
+  echo: false
+  warning: false
+---
+
+```{r setup, include=FALSE}
+library(yaml)
+library(knitr)
+
+# Load all data files
+personal <- yaml::read_yaml("../data/personal.yaml")
+positions <- yaml::read_yaml("../data/positions.yaml")
+education <- yaml::read_yaml("../data/education.yaml")
+publications <- yaml::read_yaml("../data/publications.yaml")
+teaching <- yaml::read_yaml("../data/teaching.yaml")
+service <- yaml::read_yaml("../data/service.yaml")
+awards <- yaml::read_yaml("../data/awards.yaml")
+grants <- yaml::read_yaml("../data/grants.yaml")
+media <- yaml::read_yaml("../data/media.yaml")
+industry <- yaml::read_yaml("../data/industry.yaml")
+presentations <- yaml::read_yaml("../data/presentations.yaml")
+
+# Helper function to escape LaTeX special characters
+escape_latex <- function(text) {
+  if (is.null(text)) return("")
+  text <- gsub("&", " and ", text)
+  text <- gsub("_", "\\\\_", text)
+  text <- gsub("%", "\\\\%", text)
+  text <- gsub("#", "\\\\#", text)
+  return(text)
+}
+```
+
+\begin{center}
+{\small Last Updated: `r format(Sys.Date(), "%B %d, %Y")`}
+
+\vspace{1em}
+{\LARGE\textbf{`r paste(personal$name$first, personal$name$middle, personal$name$last)`}}
+
+\vspace{1em}
+{\normalsize
+\begin{tabular}{c}
+`r escape_latex(personal$current_position$department)` \\
+`r escape_latex(personal$current_position$institution)` \\
+\vspace{0.5em}
+`r personal$current_position$address$street` \\
+Phone: `r personal$contact$phone` \\
+Email: `r personal$contact$email` \\
+\end{tabular}
+}
+\end{center}
+
+\vspace{1.5em}
+\section*{ACADEMIC POSITIONS}
+
+```{r results='asis'}
+if (!is.null(positions$academic_positions)) {
+  for (pos in positions$academic_positions) {
+    pos_text <- paste0(
+      "\\textbf{", escape_latex(pos$title), "}\\\\",
+      escape_latex(pos$institution), ", ", escape_latex(pos$department), "\\\\",
+      "\\textit{", pos$period, "}"
+    )
+    if (!is.null(pos$mentor)) {
+      pos_text <- paste0(pos_text, "\\\\\n\\textit{Mentor: ", escape_latex(pos$mentor), "}")
+    }
+    cat("\\cvitem{", pos_text, "}\n\n\\vspace{0.75em}\n", sep="")
+  }
+}
+```
+
+\section*{EDUCATION}
+
+```{r results='asis'}
+for (edu in education) {
+  cat("\\cvitem{\\textbf{", edu$degree, "}\\hfill", edu$year, "}\n\n", sep="")
+  cat("\\cvitem{", escape_latex(edu$institution), "}\n", sep="")
+  if (!is.null(edu$department)) {
+    cat("\\cvitem{", escape_latex(edu$department), "}\n\n", sep="")
+  }
+  if (!is.null(edu$advisors)) {
+    if (is.character(edu$advisors)) {
+      cat("\\cvitem{\\textit{Advisor: ", escape_latex(edu$advisors), "}}\n\n", sep="")
+    } else {
+      cat("\\cvitem{\\textit{Advisor: ", paste(sapply(edu$advisors, escape_latex), collapse=", "), "}}\n\n", sep="")
+    }
+  }
+  if (!is.null(edu$dissertation)) {
+    cat("\\cvitem{\\textit{Dissertation: ", escape_latex(edu$dissertation), "}}\n\n", sep="")
+  }
+  if (!is.null(edu$honors)) {
+    cat("\\cvitem{\\textit{Honors: ", escape_latex(edu$honors), "}}\n\n", sep="")
+  }
+  cat("\\vspace{1em}\n")
+}
+```
+
+\section*{PUBLICATIONS}
+
+\subsection*{Journal Articles}
+
+```{r results='asis'}
+if (!is.null(publications$peer_reviewed)) {
+  for (pub in publications$peer_reviewed) {
+    pub_text <- paste0(
+      escape_latex(pub$authors), " (", pub$year, "). ",
+      escape_latex(pub$title), ". ",
+      "\\textit{", escape_latex(pub$journal), "}"
+    )
+    if (!is.null(pub$pages)) {
+      pub_text <- paste0(pub_text, ", ", escape_latex(pub$pages))
+    }
+    pub_text <- paste0(pub_text, ". ")
+    
+    # Add DOI with hyperlink
+    if (!is.null(pub$doi)) {
+      pub_text <- paste0(pub_text, "\\href{https://doi.org/", pub$doi, "}{doi:", pub$doi, "}")
+    }
+    
+    # Add citation count if available
+    if (!is.null(pub$citations)) {
+      pub_text <- paste0(pub_text, " (Google Scholar citations: ", pub$citations, ")")
+    }
+    
+    cat("\\begin{itemize}\\item ", pub_text, "\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\subsection*{Book Chapters}
+
+```{r results='asis'}
+if (!is.null(publications$book_chapters)) {
+  for (chapter in publications$book_chapters) {
+    chapter_text <- paste0(
+      escape_latex(chapter$authors), " (", chapter$year, "). ",
+      escape_latex(chapter$title), ". In ",
+      "\\textit{", escape_latex(chapter$book), "}"
+    )
+    if (!is.null(chapter$pages)) {
+      chapter_text <- paste0(chapter_text, " (pp. ", escape_latex(chapter$pages), ")")
+    }
+    chapter_text <- paste0(chapter_text, ". ", escape_latex(chapter$publisher))
+    
+    cat("\\begin{itemize}\\item ", chapter_text, ".\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\subsection*{Research Grants}
+
+```{r results='asis'}
+if (!is.null(grants$grants)) {
+  for (grant in grants$grants) {
+    grant_text <- paste0(
+      escape_latex(grant$investigators), " ", 
+      "\\textit{", escape_latex(grant$title), "}. ",
+      escape_latex(grant$agency), ". ",
+      grant$grant_number,
+      " (\\$", formatC(as.numeric(gsub("[^0-9.]", "", grant$amount)), format="f", digits=0, big.mark=","), ") ",
+      "(", grant$period, ")."
+    )
+    cat("\\begin{itemize}\\item ", grant_text, "\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\section*{TEACHING EXPERIENCE}
+
+```{r results='asis'}
+if (!is.null(teaching$teaching_experience)) {
+  for (exp in teaching$teaching_experience) {
+    cat("\\textbf{", escape_latex(exp$institution), "}\n\n", sep="")
+    
+    for (course in exp$courses) {
+      course_text <- paste0(
+        "\\textbf{", escape_latex(course$name), "} (", course$level, ")\\\\",
+        "Role: ", course$role, "\\\\",
+        "Semesters: ", paste(course$semesters, collapse=", "), "\\\\",
+        escape_latex(course$description)
+      )
+      cat("\\cvitem{", course_text, "}\n\n", sep="")
+    }
+  }
+}
+```
+
+\section*{TEACHING EVALUATIONS}
+
+```{r results='asis'}
+if (!is.null(teaching$teaching_summary$evaluation_summary)) {
+  cat("\\textit{", escape_latex(teaching$teaching_summary$evaluation_summary), "}\n\n\\vspace{0.5em}\n\n")
+}
+
+if (!is.null(teaching$teaching_experience)) {
+  for (exp in teaching$teaching_experience) {
+    for (course in exp$courses) {
+      if (!is.null(course$evaluations)) {
+        cat("\\textbf{", escape_latex(course$name), "}\n\n", sep="")
+        
+        for (eval in course$evaluations) {
+          eval_text <- paste0(
+            eval$semester, ":\\\\",
+            "Instructor Rating: ", eval$soot_scores$instructor, " (out of 4)\\\\",
+            "Course Rating: ", eval$soot_scores$course, " (out of 4)"
+          )
+          if (!is.null(eval$note)) {
+            eval_text <- paste0(eval_text, "\\\\", escape_latex(eval$note))
+          }
+          cat("\\cvitem{", eval_text, "}\n\n", sep="")
+        }
+        cat("\\vspace{0.5em}\n\n")
+      }
+    }
+  }
+}
+```
+
+\section*{CONFERENCE PRESENTATIONS}
+
+```{r results='asis'}
+if (!is.null(presentations$conference_presentations)) {
+  for (pres in presentations$conference_presentations) {
+    pres_text <- paste0(
+      escape_latex(pres$authors), " (", pres$year
+    )
+    if (!is.null(pres$date)) {
+      pres_text <- paste0(pres_text, ", ", pres$date)
+    }
+    pres_text <- paste0(pres_text, "). ", escape_latex(pres$title))
+    
+    if (!is.null(pres$symposium_info)) {
+      pres_text <- paste0(pres_text, ". ", escape_latex(pres$symposium_info))
+    }
+    
+    if (!is.null(pres$type)) {
+      pres_text <- paste0(pres_text, " [", escape_latex(pres$type), "]")
+    }
+    
+    pres_text <- paste0(pres_text, ". ", escape_latex(pres$venue))
+    
+    if (!is.null(pres$location)) {
+      pres_text <- paste0(pres_text, ", ", escape_latex(pres$location))
+    }
+    
+    if (!is.null(pres$organizers)) {
+      pres_text <- paste0(pres_text, ". (", escape_latex(pres$organizers), ", Organizers)")
+    }
+    
+    cat("\\begin{itemize}\\item ", pres_text, ".\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\section*{SERVICE AND LEADERSHIP}
+
+```{r results='asis'}
+# Editorial Service
+if (!is.null(service$professional_service$editorial)) {
+  for (role in service$professional_service$editorial) {
+    cat("\\begin{itemize}\\item ", "\\textbf{", escape_latex(role$role), "}", sep="")
+    cat("\\\\", escape_latex(role$journal), " (", escape_latex(role$period), ")", sep="")
+    if (!is.null(role$details)) {
+      cat("\\\\", escape_latex(role$details), sep="")
+    }
+    cat("\\end{itemize}\n\n")
+  }
+}
+
+# Virginia Tech Service
+if (!is.null(service$institutional_service)) {
+  for (inst in service$institutional_service) {
+    if (inst$institution == "Virginia Tech") {
+      for (role in inst$roles) {
+        cat("\\begin{itemize}\\item ", "\\textbf{", escape_latex(role$role), "}", sep="")
+        cat("\\\\", escape_latex(role$organization), " (", escape_latex(role$period), ")", sep="")
+        if (!is.null(role$description)) {
+          cat("\\\\", escape_latex(role$description), sep="")
+        }
+        cat("\\end{itemize}\n\n")
+      }
+    }
+  }
+}
+
+# Binghamton Service
+if (!is.null(service$institutional_service)) {
+  for (inst in service$institutional_service) {
+    if (inst$institution == "Binghamton University") {
+      for (role in inst$roles) {
+        cat("\\begin{itemize}\\item ", "\\textbf{", escape_latex(role$role), "}", sep="")
+        cat("\\\\", escape_latex(inst$institution), " (", escape_latex(role$period), ")", sep="")
+        if (!is.null(role$description)) {
+          cat("\\\\", escape_latex(role$description), sep="")
+        }
+        cat("\\end{itemize}\n\n")
+      }
+    }
+  }
+}
+```
+
+\section*{HONORS AND AWARDS}
+
+```{r results='asis'}
+if (!is.null(awards$awards)) {
+  for (award in awards$awards) {
+    award_text <- paste0(
+      "\\textbf{", escape_latex(award$title), "}"
+    )
+    if (!is.null(award$organization)) {
+      award_text <- paste0(award_text, "\\\\", escape_latex(award$organization))
+    }
+    if (!is.null(award$year)) {
+      award_text <- paste0(award_text, " (", award$year, ")")
+    }
+    if (!is.null(award$description)) {
+      award_text <- paste0(award_text, "\\\\", escape_latex(award$description))
+    }
+    cat("\\begin{itemize}\\item ", award_text, "\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\section*{MEDIA AND PRESS}
+
+```{r results='asis'}
+if (!is.null(media$media_appearances)) {
+  for (item in media$media_appearances) {
+    media_text <- paste0(
+      "\\textbf{", escape_latex(item$title), "}\\\\",
+      escape_latex(item$type), " - ", escape_latex(item$outlet)
+    )
+    if (!is.null(item$date)) {
+      media_text <- paste0(media_text, " (", item$date, ")")
+    }
+    if (!is.null(item$description)) {
+      media_text <- paste0(media_text, "\\\\", escape_latex(item$description))
+    }
+    if (!is.null(item$url)) {
+      media_text <- paste0(media_text, "\\\\\\url{", item$url, "}")
+    }
+    if (!is.null(item$details)) {
+      media_text <- paste0(media_text, "\\\\", escape_latex(item$details))
+    }
+    cat("\\begin{itemize}\\item ", media_text, "\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\section*{INDUSTRY EXPERIENCE}
+
+```{r results='asis'}
+if (!is.null(industry$industry_experience)) {
+  for (exp in industry$industry_experience) {
+    industry_text <- paste0(
+      "\\textbf{", escape_latex(exp$role), "}\\\\",
+      escape_latex(exp$organization)
+    )
+    if (!is.null(exp$period)) {
+      industry_text <- paste0(industry_text, " (", exp$period, ")")
+    }
+    if (!is.null(exp$responsibilities)) {
+      industry_text <- paste0(industry_text, "\\\\", paste(sapply(exp$responsibilities, escape_latex), collapse="\\\\"))
+    }
+    if (!is.null(exp$impact)) {
+      industry_text <- paste0(industry_text, "\\\\", escape_latex(exp$impact))
+    }
+    cat("\\begin{itemize}\\item ", industry_text, "\\end{itemize}\n\n", sep="")
+  }
+}
+```
+
+\section*{PROFESSIONAL PRESENTATIONS \& WORKSHOPS}
+
+```{r results='asis'}
+if (!is.null(presentations$professional_presentations)) {
+  for (pres in presentations$professional_presentations) {
+    pres_text <- paste0(
+      "\\textbf{", escape_latex(pres$title), "}\\\\",
+      escape_latex(pres$venue)
+    )
+    if (!is.null(pres$date)) {
+      pres_text <- paste0(pres_text, " (", pres$date, ")")
+    }
+    if (!is.null(pres$description)) {
+      pres_text <- paste0(pres_text, "\\\\", escape_latex(pres$description))
+    }
+    cat("\\begin{itemize}\\item ", pres_text, "\\end{itemize}\n\n", sep="")
+  }
+}
+```

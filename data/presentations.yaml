@@ -1,0 +1,147 @@
+conference_presentations:
+  - title: "The In Between: Postdocs for Industrial-Organizational Psychologists"
+    authors: "Harris-Watson, A. M., Acton, B., Robertson, M., Traylor, A., & McCukser, M."
+    venue: "Society for Industrial and Organizational Psychology Annual Conference"
+    year: 2023
+    role: "Panelist"
+    location: "Boston, MA, United States"
+    description: "Panel discussion providing insight into postdoctoral experiences specific to I-O psychology, sharing perspectives on transitioning into faculty and industry positions."
+    details: "50-minute panel discussion in Ballroom B covering challenges and benefits of postdocs, advice for choosing and succeeding in postdoc positions."
+
+  - title: "Automating Is The Future: Improving Research Scalability With Predictive Modeling"
+    authors: "Acton, B.P. & Koenig, N."
+    venue: "Society for Industrial and Organizational Psychology Annual Conference"
+    year: 2022
+    role: "Co-Chair & Symposium Organizer"
+    location: "Seattle, WA, United States"
+    description: "Symposium presenting papers utilizing predictive modeling as a tool for effectively using data-driven approaches in organizational research, covering topics including diversity, employee well-being, and leadership."
+
+  - title: "Modeling Identities in Context: A Dynamical Systems Approach to Leader-Follower Identities"
+    authors: "Nieberle, K. W., Acton, B. P., Braun, S., & Lord, R."
+    venue: "Academy of Management Annual Conference"
+    year: 2021
+    role: "Speaker & Co-Author"
+
+  - title: "An application and tutorial for creating within-person memory-sourced leadership scales"
+    authors: "Acton, B. P., Lord, R. G., Hansbrough, T. K., & Foti, R. J."
+    venue: "Academy of Management Annual Conference"
+    year: 2021
+    role: "Speaker & Lead Author"
+
+  - title: "More than liking: the role of memory systems and language in leadership ratings"
+    authors: "Acton, B. P., Lord, R. G., Hansbrough, T. K., & Foti, R. J."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2021
+    role: "Lead author on Poster"
+
+  - title: "Assessing the impact of self-identity on organizational outcomes using an implicit measure"
+    authors: "Acton, B. P., Lord, R. G., Hansbrough, T. K., & Foti, R. J."
+    venue: "Academy of Management Annual Conference"
+    year: 2020
+    role: "Speaker & Lead Author"
+
+  - title: "Explaining how and when race related to leadership emergence"
+    authors: "Mitchell, T., Coyle, P., Williamson, G., Ricedorf, V., & Acton, B. P."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2020
+    role: "co-Author on Poster"
+
+  - title: "Capturing the process of cohesion emergence using continuous rating assessments"
+    authors: "Acton, B. P., Calderwood, C., & Mastrich, Z."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2019
+    role: "Author, Speaker & Organized Symposium"
+
+  - title: "Ready & willing: assessing profiles of leader/follower self-schemas"
+    authors: "Acton, B. P. & Foti, R. J."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2019
+    role: "Author & Speaker"
+
+  - title: "Agent-based modeling: current and future directions in organizational psychology"
+    authors: "Glasgow, T., Foti, R. J., & Acton, B. P."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2019
+    role: "co-Author on Poster"
+
+  - title: "An examination of psychological collectivism using item response theory"
+    authors: "Du, C., Foti, R. J., & Acton, B. P."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2018
+    role: "co-Author on Poster"
+
+  - title: "Putting two-and-two together: using sociometric measures to capture cohesion emergence"
+    authors: "Acton, B. P. & Braun, M. T."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2017
+    role: "Speaker & Lead Author"
+
+  - title: "Increasing the power to detect adverse impact in small selection contexts"
+    authors: "McCusker, M., Burns, D., Wycoff, N., Hauenstein, N., & Acton, B. P."
+    venue: "Society of Industrial Organizational Psychology Annual Conference"
+    year: 2017
+    role: "co-Author on Poster"
+
+  - title: "The role of the 'mere presence effect' in the development of intra-group cohesion"
+    authors: "Acton, B. P., Shah, Y., Axsom, D., & Foti, R. J."
+    venue: "Society for Personality & Social Psychology"
+    year: 2017
+    role: "Lead author on Poster"
+
+  - title: "Leadership Questionnaires in the Age of AI: From Traditional Roots, to AI & Data Science"
+    authors: "Acton, B. P., & Li, M. (Chairs). Hansbrough, T.K, & Hall, R.J (Discussants)"
+    venue: "84th Annual Meeting of the Academy of Management"
+    year: "2024"
+    location: "Chicago, IL, United States"
+    role: "Symposium Chair"
+    date: "August 13"
+    type: "Symposium"
+
+  - title: "AI Nomological Nets: Identifying the Overlap between Leadership Items using Word Embedding Models"
+    authors: "Li, M. & Acton, B. P."
+    venue: "84th Annual Meeting of the Academy of Management"
+    year: "2024"
+    location: "Chicago, IL, United States"
+    role: "Symposium Presentation"
+    date: "August 13"
+    type: "Symposium"
+    symposium_info: "In Acton & Li (Chairs), Leadership Questionnaires in the Age of AI: From Traditional Roots, to AI & Data Science"
+
+  - title: "The dark side of expressing self-reflective job titles"
+    authors: "Acton, B. P., Coyle, P., & Mitchell, T. D."
+    venue: "84th Annual Meeting of the Academy of Management"
+    year: "2024"
+    location: "Chicago, IL, United States"
+    role: "Symposium Presentation"
+    date: "August 12"
+    type: "Symposium"
+    symposium_info: "In S. Thomas (Chair), Using of agent-based modeling across management research"
+
+  - title: "Leader-Follower Identity Dynamics: Current and Future Directions"
+    authors: "Acton, B. P., Jaser, Z., Johnson, S. K., Nieberle, K., & Sy, T. (Panelists)"
+    venue: "84th Annual Meeting of the Academy of Management"
+    year: "2024"
+    location: "Chicago, IL, United States"
+    role: "Panel Symposium"
+    date: "August 13"
+    type: "Panel Symposium"
+    organizers: "Chalkiadaki, K. & Zheng, J."
+
+professional_presentations:
+  - title: "Transcribing text and initial text analysis using R"
+    venue: "Durham University Centre for Leadership & Followership"
+    type: "Workshop"
+    year: 2021
+    description: "Taught 2-hour long workshop to smaller group of faculty and graduate students. Covered how to use 'TranscribeR' package and 'tidytext' package in R to analyze text data"
+
+  - title: "Introduction to the Tidyverse and data analysis in R"
+    venue: "Virginia Tech ILT Lab"
+    type: "Workshop"
+    year: 2021
+    description: "Taught 1.5 hour long workshop to a small group of PhD students and undergraduates."
+
+  - title: "I have my data. Now what? A tutorial on data cleaning, wrangling, and initial analysis via R"
+    venue: "Durham University PhD Students"
+    type: "Workshop"
+    year: 2020
+    description: "Taught 2-hour long workshop which served as an introduction to R for social scientists to a group of 15+ PhD Students." 
